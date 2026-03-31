@@ -22,6 +22,12 @@ import {
 import { Language } from '@/types'
 import { MENU_DATA, UI_STRINGS } from '@/constants'
 
+const BACK_TO_WEBSITE = {
+  nl: 'Terug naar website',
+  de: 'Zurück zur Website',
+  en: 'Back to website',
+}
+
 const FLAGS = {
   nl: '🇳🇱',
   de: '🇩🇪',
@@ -115,12 +121,21 @@ export default function DeckerMenu() {
             <p className="text-[10px] uppercase tracking-[0.2em] opacity-60">Grand-Café</p>
           </div>
 
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 hover:bg-[#5A5A40]/5 rounded-full transition-colors"
-          >
-            {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
-          </button>
+          <div className="flex items-center gap-1">
+            <a
+              href="https://www.grandcafedeckers.nl"
+              className="p-2 hover:bg-[#5A5A40]/5 rounded-full transition-colors text-[#5A5A40]/60 hover:text-[#5A5A40]"
+              title={BACK_TO_WEBSITE[lang]}
+            >
+              <X size={24} />
+            </a>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 hover:bg-[#5A5A40]/5 rounded-full transition-colors"
+            >
+              {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -210,12 +225,6 @@ export default function DeckerMenu() {
                         <h4 className="text-xl font-medium group-hover:text-[#5A5A40] transition-colors">
                           {item.name[lang]}
                         </h4>
-                        <span className="text-lg font-mono font-medium text-[#5A5A40]">
-                          €{' '}
-                          {typeof item.price === 'number'
-                            ? item.price.toFixed(2).replace('.', ',')
-                            : item.price}
-                        </span>
                       </div>
                       {item.description && (
                         <p className="text-[#5A5A40]/70 leading-relaxed max-w-2xl">
