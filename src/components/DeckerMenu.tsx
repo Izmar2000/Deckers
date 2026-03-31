@@ -231,7 +231,7 @@ export default function DeckerMenu() {
                           {item.description[lang]}
                         </p>
                       )}
-                      <div className="mt-6 h-px w-full bg-[#5A5A40]/5" />
+                      <div className="mt-6 h-px w-full bg-[#5A5A40]/20" />
                     </div>
                   ))}
               </div>
